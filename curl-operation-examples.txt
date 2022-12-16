@@ -7,5 +7,5 @@ curl http://localhost:8080/calculate
       "term": 12,
       "period": "month",
       "rate": 10,
-      "mortgage_type": "dif"
+      "mortgage_type": "an"
     }'
