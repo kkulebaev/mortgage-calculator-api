@@ -137,16 +137,16 @@ func calcPaymentDetailAn(estMortgageBody, monthRate, monthPay, monthTerm float64
 }
 
 func calcPaymentDetailDif(estMortgageBody, monthRate, repayBody, monthTerm float64) []PaymentByMonth {
-  var paymentDetail = []PaymentByMonth{}
-  debtEnd := estMortgageBody
+	var paymentDetail = []PaymentByMonth{}
+	debtEnd := estMortgageBody
 
 	var i float64 = 1
-  for ; i <= monthTerm; i++ {
-    var repayPer = debtEnd * monthRate
-    var monthPay = repayBody + repayPer
-    debtEnd = debtEnd - repayBody
+	for ; i <= monthTerm; i++ {
+		var repayPer = debtEnd * monthRate
+		var monthPay = repayBody + repayPer
+		debtEnd = debtEnd - repayBody
 
-    var paymentByMonth = PaymentByMonth{
+		var paymentByMonth = PaymentByMonth{
 			ID:        i,
 			MonthPay:  monthPay,
 			RepayPer:  repayPer,
@@ -154,8 +154,8 @@ func calcPaymentDetailDif(estMortgageBody, monthRate, repayBody, monthTerm float
 			DebtEnd:   debtEnd,
 		}
 
-    paymentDetail = append(paymentDetail, paymentByMonth)
-  }
+		paymentDetail = append(paymentDetail, paymentByMonth)
+	}
 
-  return paymentDetail
+	return paymentDetail
 }
