@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	cors "github.com/rs/cors/wrapper/gin"
 )
 
 type PaymentByMonth struct {
@@ -39,6 +40,7 @@ type InputPart struct {
 
 func main() {
 	router := gin.Default()
+	router.Use(cors.Default())
 	router.POST("/calculate", calcMortgage)
 
 	err := router.Run("localhost:8080")
