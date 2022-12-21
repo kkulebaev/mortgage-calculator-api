@@ -4,6 +4,7 @@ import (
 	"log"
 	"math"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	cors "github.com/rs/cors/wrapper/gin"
@@ -39,14 +40,20 @@ type InputPart struct {
 }
 
 func main() {
-	router := gin.Default()
+	gin.SetMode(gin.ReleaseMode)
+
+	router := gin.New()
+
 	router.Use(cors.Default())
 	router.POST("/calculate", calcMortgage)
 	router.GET("/ping", ping)
 
-	err := router.Run("localhost:8080")
-	if err != nil {
-		log.Fatal(err)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	if err := router.Run(":" + port); err != nil {
+		log.Panicf("error: %s", err)
 	}
 }
 
