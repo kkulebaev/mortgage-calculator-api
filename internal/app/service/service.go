@@ -8,10 +8,10 @@ import (
 
 type PaymentByMonth struct {
 	ID        float64 `json:"id"`
-	MonthPay  float64 `json:"month_pay"`
-	RepayPer  float64 `json:"repay_per"`
-	RepayBody float64 `json:"repay_body"`
-	DebtEnd   float64 `json:"debt_end"`
+	MonthPay  float64 `json:"monthPay"`
+	RepayPer  float64 `json:"repayPer"`
+	RepayBody float64 `json:"repayBody"`
+	DebtEnd   float64 `json:"debtEnd"`
 }
 
 type Input struct {
@@ -19,20 +19,20 @@ type Input struct {
 	Term         float64 `json:"term"`
 	Period       string  `json:"period"`
 	Rate         float64 `json:"rate"`
-	MortgageType string  `json:"mortgage_type"`
+	MortgageType string  `json:"mortgageType"`
 }
 
 type Output struct {
-	TakeValue        float64          `json:"take_value"`
-	RepayValue       float64          `json:"repay_value"`
-	OverpaymentValue float64          `json:"overpayment_value"`
-	PaymentTable     []PaymentByMonth `json:"payment_table"`
+	TakeValue        float64          `json:"takeValue"`
+	RepayValue       float64          `json:"repayValue"`
+	OverpaymentValue float64          `json:"overpaymentValue"`
+	PaymentTable     []PaymentByMonth `json:"paymentTable"`
 }
 
 type InputPart struct {
 	Amount    float64 `json:"amount"`
-	MonthTerm float64 `json:"month_term"`
-	MonthRate float64 `json:"month_rate"`
+	MonthTerm float64 `json:"monthTerm"`
+	MonthRate float64 `json:"monthRate"`
 }
 
 func Ping(c *gin.Context) {
