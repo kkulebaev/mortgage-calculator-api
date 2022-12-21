@@ -42,11 +42,16 @@ func main() {
 	router := gin.Default()
 	router.Use(cors.Default())
 	router.POST("/calculate", calcMortgage)
+	router.GET("/ping", ping)
 
 	err := router.Run("localhost:8080")
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func ping(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, "All is OK")
 }
 
 func calcMortgage(c *gin.Context) {
